@@ -10,6 +10,7 @@ Document Management System
 Apk :
 1. XAMPP
 2. VSCODE or PYCHARM
+3. Google Chrome
 
 Cara :
 1. pip install flask
