@@ -15,7 +15,7 @@ Apk :
 Cara :
 1. pip install flask
 2. pip install Flask-MySQLdb
-3. download modul extension pip, mysql, dan html di VSCODE
+3. Download modul extension pip, mysql, dan html di VSCODE
 4. Import file document.sql ke dalam database PHPMyAdmin dengan nama document
 5. Jalankan program main.py
 6. Copy link ke dalam google Chrome
