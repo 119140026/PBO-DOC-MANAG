@@ -196,8 +196,6 @@ def upload_document():
 
 from flask import send_file, send_from_directory, safe_join, abort
 
-# app.config["CLIENT_DOCUMENT"] = 'TUBES/TUBES/uploads'
-
 @app.route('/download/<doc>')
 def downloadFile (doc):
     path = doc
