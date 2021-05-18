@@ -159,7 +159,7 @@ def updated():
         mysql.connection.commit()
         return redirect(url_for('d'))
 
-app.config["DOCUMENT_UPLOADS"] = 'Minervas/TUBES/uploads'
+app.config["DOCUMENT_UPLOADS"] = 'TUBES/TUBES/uploads'
 app.config["ALLOWED_DOCUMENT_EXTENSIONS"] = ["PDF", "XLS", "XLSX", "PPT", "PPTX", "TXT", "DOC", "DOCX"]
 
 def allowed_document(filename):
