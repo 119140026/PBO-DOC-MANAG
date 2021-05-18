@@ -1,0 +1,79 @@
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard | Upload</title>
+  <link rel="stylesheet" href="static/css/normalize.css">
+  <link rel="stylesheet" href="static/css/style.css">
+</head>
+
+<link href="{{url_for('static', filename = 'css/bootstrap.min.css')}}" rel="stylesheet"> 
+{% block body %}
+
+<body>
+  <header>
+    <a href="#" class="logo">DMS</a>
+    <ul class="menu"> 
+      <li class="active">
+        <a href="/upload">
+          <span></span> 
+          <img src="static/images/upload.png" alt="kategori" width="25" height="25">
+        </a>
+      </li>
+      <li>
+        <a href="/">
+          <span></span> 
+          <img src="static/images/kategori.png" alt="kategori" width="25" height="25">
+        </a>
+      </li>
+      </li>
+      <li>
+        <a href="/topic">
+          <span></span>
+          <img src="static/images/topik.png" alt="topik" width="25" height="25">
+        </a>
+      </li>
+      <li>
+        <a href="/document">
+          <span></span>
+          <img src="static/images/dokumen.png" alt="dokumen" width="25" height="25">
+        </a>
+      </li>
+    </ul>
+  </header>
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+
+      <h1>Upload Document</h1>
+      <hr>
+
+      <form action="/upload" method="POST" enctype="multipart/form-data">
+
+        <div class="form-group">
+          <label>Select Document</label>
+          <div class="custom-file">
+            <input type="file" class="custom-file-input" name="document" id="document">
+            <label class="custom-file-label" for="document">Select Document...</label>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Upload</button>
+
+      </form>
+      <div>
+    <p class="copy">Copy right &copy; Minerva's.</p>
+</div>
+
+    </div>
+  </div>
+</div>
+
+
+{% endblock %}
+ <script src="static/js/jquery-3.6.0.min.js"></script>
+<script src="static/js/sweetalert2.js"></script>
+<script src="static/js/script.js"></script>
+<script type="text/javascript" src="{{url_for('static', filename='js/jquery-3.2.1.min.js') }}"></script>
+<script type="text/javascript" src="{{url_for('static', filename = 'js/bootstrap.min.js')}}"></script>

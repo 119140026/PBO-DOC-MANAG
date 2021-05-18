@@ -1,0 +1,258 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;700&display=swap');
+body{
+  position: relative;
+  background-color: #ffffff;
+  font-family: 'Arial', sans-serif;
+}
+
+header{
+  position: fixed;
+  width: 80px;
+  height: 100%;
+  background-color: #ffffff;
+}
+
+.logo{
+  font-family: 'Roboto', sans-serif;
+  font-weight: bold;
+  display: block;
+  font-size: 25px;
+  text-align: center;
+  line-height: 2;
+  color: #000000;
+  text-decoration: none;
+  margin-bottom: 50px;  
+}
+
+ul{
+  padding-left: 0;
+}
+li{
+  position: relative;
+  list-style: none;
+}
+img{
+  display: inline-block;
+}
+
+.menu li a{
+  position: relative;
+  display: block;
+  text-align: center;
+  padding: 15px 0;
+}
+
+.menu .active a span {
+  position: absolute;
+  top: 0;
+  left: 10px;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  border-top-left-radius: 25px;
+  border-bottom-left-radius: 25px;
+  background-color: #ffffff;
+}
+
+.menu .active a span::before {
+  content: '';
+  position: absolute;
+  top: -20px;
+  right: 10px;
+  width: calc(100% - 10px);
+  height: 20px;
+  z-index: -1;
+  -moz-border-radius: 0 0 25px 0;
+  -webkit-border-radius: 0 0 25px 0;
+  background-color: #ffffff;
+}
+
+.menu .active a span::after {
+  content: '';
+  position: absolute;
+  bottom: -20px;
+  right: 10px;
+  width: calc(100% - 10px);
+  height: 20px;
+  z-index: -1;
+  -moz-border-radius: 0 25px 0 0;
+  -webkit-border-radius: 0 25px 0 0;
+  background-color: #ffffff;
+}
+
+.menu li a img{
+  opacity: 0.3;
+}
+.menu .active a img{
+  opacity: 1;
+}
+.menu .active:before {
+  content: '';
+  position: absolute;
+  top: -18px;
+  right: -2px;
+  width: 22px;
+  height: calc(100% + 36px);
+  z-index: -1;
+  border-top-left-radius: 25px;
+  border-bottom-left-radius: 25px;
+  background-color: #ffffff;
+}
+.main {
+  width: calc(100% - 80px);
+  padding: 30px 0;
+  margin-left: 80px;
+}
+.container{
+  max-width: 1100px;
+  margin: auto;
+}
+h1{
+  font-family: 'Roboto', sans-serif;
+  font-weight: 100;
+}
+.card{
+  padding: 30px;
+  border-radius: 20px;
+  background-color: #ffffff;
+}
+.btn{
+  cursor: pointer;
+  display: inline-block;
+  padding: 10px;
+  font-size: 12px;
+  border-radius: 10px;
+  color: #000000;
+  text-decoration: none;
+  background-color: #ffffff;
+  border: none;
+  opacity: 1;
+  transition: 0.3s;
+}
+
+.btn:hover{
+  opacity: .7;
+}
+.btn.large{
+  font-size: 14px;
+  padding: 15px;
+}
+.btn.small{
+  border-radius: 5px;
+  padding: 5px;
+}
+.btn.green{
+  color: #ffffff;
+  background-color: #86d383;
+}
+.btn.yellow{
+  color: #000000;
+  background-color: #ffd04e;
+}
+.btn.red{
+  color: #ffffff;
+  background-color: #e65454;
+}
+table{
+  width: 100%;
+  margin : 20px 0;
+  text-align: left;
+}
+th, td {
+  padding: 10px;
+}
+th{
+  background-color: #ffffff;
+}
+
+
+#edit-modal.on,#add-modal.on{
+  z-index: 9;
+  opacity: 1;
+}
+
+#edit-modal,#add-modal{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -99;
+  opacity: 0;
+}
+
+#edit-modal> .close,#add-modal > .close{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.modal-card{
+  position: relative;
+  top: 50%;
+  left: 50%;
+  width: 550px;
+  padding: 30px;
+  border-radius: 30px;
+  background: #ffffff;
+  transform: translate(-50%, -50%) scale(0);
+  transition: 0.3s;
+}
+
+#edit-modal.on .modal-card, #add-modal.on .modal-card{
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.modal-card h3{
+  font-size: 25px;
+  margin-top: 0;
+  font-family: 'Roboto', sans-serif;
+}
+
+
+.modal-card .close{
+  position: absolute;
+  top: -10px;
+  right: 0;
+  font-size: 18px;
+  transform: translateY(-100%);
+  text-decoration: none;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+.modal-card .input-wrap{
+  margin-bottom: 20px;
+}
+
+.modal-card .input-wrap *{
+  display: block;
+}
+
+.modal-card .input-wrap *+*{
+  margin-top: 5px;
+}
+
+.modal-card .input-wrap input{
+  box-sizing: border-box;
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ffffff;
+}
+
+.swal2-container.swal2-center>.swal2-popup{
+  border-radius: 30px;
+}
+
+.swal2-styled.swal2-confirm,.swal2-styled.swal2-cancel{
+  border-radius: 10px !important;
+}
+
+.copy{
+  font-size: 12px;
+  font-weight: 100;
+  margin-top: 100px;
+  letter-spacing: 2px;
+}

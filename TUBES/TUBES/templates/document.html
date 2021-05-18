@@ -1,0 +1,195 @@
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard | Document</title>
+  <link rel="stylesheet" href="static/css/normalize.css">
+  <link rel="stylesheet" href="static/css/style.css">
+</head>
+
+<link href="{{url_for('static', filename = 'css/bootstrap.min.css')}}" rel="stylesheet">
+
+{% block body %}
+<body>
+   <header>
+      <a href="#" class="logo">DMS</a>
+      <ul class="menu"> 
+        <li>
+          <a href="/upload">
+            <span></span> 
+            <img src="static/images/upload.png" alt="kategori" width="25" height="25">
+          </a>
+        </li>
+        <li>
+          <a href="/">
+            <span></span> 
+            <img src="static/images/kategori.png" alt="kategori" width="25" height="25">
+          </a>
+        </li>
+        </li>
+        <li>
+          <a href="/topic">
+            <span></span>
+            <img src="static/images/topik.png" alt="topik" width="25" height="25">
+          </a>
+        </li>
+        <li class="active">
+          <a href="/document">
+            <span></span>
+            <img src="static/images/dokumen.png" alt="dokumen" width="25" height="25">
+          </a>
+        </li>
+      </ul>
+    </header>
+<div class="container">
+
+    <div class="row">
+
+        <div class="col md-12">
+            <h2>Tabel Document <button type="button green large" class="btn btn-success  pull-right" data-toggle="modal" data-target="#myModal">Add Document</button></h2>
+
+    {%with messages = get_flashed_messages()%}
+
+    {%if messages%}
+
+    {% for message in messages %}
+
+    <div class="alert alert-success alert-dismissable" role="alert">
+
+     <button type="button" class="close" data-dismiss="alert" aria-label ="close">
+
+         <span aria-hidden="true">&times;</span>
+
+     </button>
+        {{message}}
+
+    </div>
+
+    {%endfor%}
+    {%endif%}
+    {%endwith%}
+            <table class="table table-striped">
+            <tr>
+              <th>Document ID</th>
+              <th>Category ID</th>
+              <th>Topic ID</th>
+              <th>Tags</th>
+              <th>File Name</th>
+              <th>Action</th>
+
+          </tr>
+
+                {% for row in document %}
+                <tr>
+                    <td>{{row.0}}</td>
+                    <td>{{row.1}}</td>
+                    <td>{{row.2}}</td>
+                    <td>{{row.3}}</td>
+                    <td>{{row.4}}</td>
+                    <td>
+
+                  <a href="/updated/{{row.0}}" class="btn btn-warning btn-xs" data-toggle="modal" data-target="#modaledit{{row.0}}">Edit</a>
+                  <a href="/deleted/{{ row.0 }}" class="btn btn-danger btn-xs" onclick="return confirm('Apakah Yakin Dihapus')">Delete</a>
+                  <a href="/download/{{row.4}}" class="btn btn-download btn-xs">Download</a>
+
+                    </td>
+
+                </tr>
+
+                <div id="modaledit{{row.0}}" class="modal fade" role="dialog">
+
+   <div class="modal-dialog">
+      <div class="modal-content">
+         <div class="modal-header">
+           <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Update Document</h4>
+         </div>
+
+         <div class="modal-body">
+            <form action="{{ url_for('updated') }}" method="POST">
+            
+               <div class="form-group">
+                  <label>Category ID:</label>
+                   <input type="hidden"  name="ID_Dokumen" value="{{row.0}}">
+                  <input type="number" class="form-control" name="Category_ID" value="{{row.1}}">
+               </div>
+
+               <div class="form-group">
+                  <label>Topic ID:</label>
+                  <input type="number" class="form-control" name="Topic_ID" value="{{row.2}}">
+               </div>
+               <div class="form-group">
+                  <label>Tags:</label>
+                  <input type="text" class="form-control" name="Tags" value="{{row.3}}">
+               </div>
+               <div class="form-group">
+                  <label>File Name:</label>
+                  <input type="text" class="form-control" name="Nama_File" value="{{row.4}}">
+               </div>
+
+              <div class="form-group">
+                  <button class="btn btn-primary" type="sbumit">Update Data Document</button>
+               </div>
+            </form>
+         </div>
+
+         <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+         </div>
+      </div>
+   </div>
+</div>
+                {% endfor  %}
+                </tbody>
+            </table>
+        </div>
+<div id="myModal" class="modal fade" role="dialog">
+
+   <div class="modal-dialog">
+      <div class="modal-content">
+         <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Insert Data</h4>
+         </div>
+         <div class="modal-body">
+            <form action="{{ url_for('insertd') }}" method="POST">
+               <div class="form-group">
+                  <label>Category ID:</label>
+                  <input type="number" class="form-control" name="Category_ID" required="1">
+               </div>
+                <div class="form-group">
+                  <label>Topic ID:</label>
+                  <input type="number" class="form-control" name="Topic_ID" required="1">
+               </div>
+               <div class="form-group">
+                  <label>Tags:</label>
+                  <input type="text" class="form-control" name="Tags" required="1">
+               </div>
+               <div class="form-group">
+                  <label>File Name:</label>
+                  <input type="text" class="form-control" name="Nama_File" required="1">
+               </div>
+               <div class="form-group">
+                  <button class="btn btn-primary" type="submit">Insert Data</button>
+               </div>
+            </form>
+         </div>
+         <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+         </div>
+      </div>
+   </div>
+</div>
+
+<div>
+    <p class="copy">Copy right &copy; Minerva's.</p>
+</div>
+
+
+{% endblock %}
+<script type="text/javascript" src="{{url_for('static', filename='js/jquery-3.2.1.min.js') }}"></script>
+
+<script type="text/javascript" src="{{url_for('static', filename = 'js/bootstrap.min.js')}}"></script>
+<script src="static/js/jquery-3.6.0.min.js"></script>
+<script src="static/js/sweetalert2.js"></script>
+<script src="static/js/script.js"></script>
