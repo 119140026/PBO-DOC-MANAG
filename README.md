@@ -23,3 +23,4 @@ Cara :
 Note: 
 1. ID di setiap Tabel menggunakan konsep AUTO_INCREMENT.
 2. File yang di upload ke dalam program akan tersimpan di TUBES/TUBES/uploads.
+3. Mengenai nomer 2, setting alamat sesuai lokasi di file anda.
